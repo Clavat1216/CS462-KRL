@@ -22,8 +22,10 @@ Trip tracker
     {
       send_directive("trip") with
         trip_length = miles;
-      raise explicit event trip_processed
-        with mileage = miles;
+    }
+    always {
+      raise explicit event trip_processed with 
+        mileage = miles;
     }
   }
 
@@ -32,10 +34,13 @@ Trip tracker
     pre{
       miles = event:attr("mileage").defaultsTo(0, "no mileage passed in.");
     }
-    if (miles > long_trip) then
-    {
-      raise explicit event found_long_trip
-        with mileage = miles;
+    if ( miles > long_trip ) then {
+      send_directive("long_trip") with
+        trip_length = miles;
+    }
+    fired {
+      raise explicit event found_long_trip with
+        mileage = miles;
     }
   }
 }
