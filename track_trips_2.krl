@@ -35,10 +35,10 @@ Trip tracker
       miles = event:attr("mileage").defaultsTo(0, "no mileage passed in.");
     }
     if ( miles > long_trip ) then {
-      send_directive("long_trip") with
-        trip_length = miles;
+      noop();
     }
     fired {
+      log "Long: " + miles;
       raise explicit event found_long_trip with
         mileage = miles;
     }
