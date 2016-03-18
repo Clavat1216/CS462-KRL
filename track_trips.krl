@@ -1,6 +1,6 @@
 ruleset track_trips {
   meta {
-    name "echo"
+    name "track_trips"
     description <<
 Trip tracker
 >>
