@@ -16,7 +16,7 @@ Trip tracker
   rule process_trip {
     select when echo message
     pre{
-      mileage = event:attr("mileage").klog("our trip mileage: ");
+      mileage = event:attr("mileage").defaultsTo(0 ,"no mileage passed in.");
     }
     send_directive("trip") with
       trip_length = mileage;

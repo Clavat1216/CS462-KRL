@@ -22,7 +22,7 @@ A simple echo server
   rule message {
     select when echo message
     pre{
-      input = event:attr("input").klog("our pass in Id: ");
+      input = event:attr("input").defaultsTo("","no name passed.");
     }
     {
       send_directive("say") with
