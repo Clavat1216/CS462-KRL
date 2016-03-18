@@ -12,17 +12,17 @@ Trip tracker
   }
   global {
     trips = function(){
-      t = "";
+      t = ent:trips;
       t;
     };
     
     long_trips = function(){
-      lt = "";
+      lt = ent:long_trips;
       lt;
     };
 
     short_trips = function(){
-      st = "";
+      st = ent:trips;
       st;
     };
   }
