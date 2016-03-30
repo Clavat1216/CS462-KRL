@@ -12,6 +12,11 @@ Fleet manager`
   }
   global {
     long_trip = 100;
+
+    vehicles = function(){
+      //TODO - return vehicles
+      long_trip;
+    }
   }
 
   rule create_vehicle{
@@ -74,4 +79,21 @@ Fleet manager`
           log("auto accepted subcription.");
     }
   }
+
+  rule delete_vehicle {
+    select when car unneeded_vehicle
+    pre{
+      vehicle_name = event:attr("name");
+
+    }
+    {
+      noop();
+    }
+    always{
+      log("removed vehicle");
+    }
+  }
 }
+
+
+
